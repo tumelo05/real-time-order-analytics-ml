@@ -189,6 +189,7 @@ These notebooks demonstrate the analytical layer behind the streaming pipelines
   "order_id": "order_57739",
   "total_items": 1
 }
+```
 
 
 
@@ -220,27 +221,28 @@ Delay (sec)Risk< 5NORMAL ✅5–15WARNING ⚠️> 15DELAYED 🔴
 
 🛠️ Setup Instructions
 1. Clone Repository
-Shellgit clone https://github.com/tumelo05/orders-analytics-ml.gitcd orders-analytics-mlShow more lines
+```Shellgit clone https://github.com/tumelo05/orders-analytics-ml.gitcd orders-analytics-mlShow more lines```
 
 2. Start Services
-Shelldocker compose up -d
+```Shelldocker compose up -d```
 
 3. Create Kafka Topic
-Shelldocker exec -it order_analytics_kafka kafka-topics \  --bootstrap-server localhost:9092 \  --create \  --topic orders.created \  --partitions 3 \  --replication-factor 1
+```Shelldocker exec -it order_analytics_kafka kafka-topics \  --bootstrap-server localhost:9092 \  --create \  --topic orders.created \  --partitions 3 \  --replication-factor 1```
 
 4. Run Kafka Producer
-Shelldocker exec -it order_analytics_kafka bashpython3 /opt/order_event_producer.py
+```Shelldocker exec -it order_analytics_kafka bashpython3 /opt/order_event_producer.py```
 
 5. Run Spark Job
-Shelldocker exec -it order_analytics_spark bash/opt/spark/bin/spark-submit \  --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \  --conf spark.jars.ivy=/tmp/ivy \  /opt/spark_job.py
+```Shelldocker exec -it order_analytics_spark bash/opt/spark/bin/spark-submit \  --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \  --conf spark.jars.ivy=/tmp/ivy \  /opt/spark_job.py```
 
 6. Verify in Postgres
-Shelldocker exec -it order_analytics_postgres psql \  -U analytics_user -d order_analytics
+```Shelldocker exec -it order_analytics_postgres psql \  -U analytics_user -d order_analytics
 SELECT *
 FROM raw.orders_line_items
 WHERE prod_sku = 'STREAM_SKU'
 ORDER BY rec_id DESC
 LIMIT 10;
+```
 
 📊 Key Features
 ✅ Real-time ingestion
@@ -271,7 +273,7 @@ Streaming failures	Debug Spark logs
 
 
 📦 requirements.txt
-Plain Textpyspark==3.5.0kafka-pythonpsycopg2-binaryShow more lines
+```Plain Textpyspark==3.5.0kafka-pythonpsycopg2-binaryShow more lines```
 
 🚀 Future Improvements
 
