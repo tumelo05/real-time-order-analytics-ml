@@ -109,27 +109,6 @@ ML Classification
 
 ---
 
-## 🧩 System Architecture Diagram
-
-```mermaid
-flowchart LR
-
-    A[Kafka Producer] --> B[Kafka Topic: orders.created]
-    B --> C[Spark Streaming Job]
-    C --> D[Feature Engineering]
-    D --> E[ML Classification]
-
-    E --> F[(PostgreSQL)]
-
-    F --> G[Analytics / Queries]
-
-    style A fill:#f9f,stroke:#333
-    style C fill:#bbf,stroke:#333
-    style F fill:#bfb,stroke:#333
-
-
----
-
 ## ⚙️ Tech Stack
 
 | Component | Technology |
@@ -291,8 +270,10 @@ Streaming failures	Debug Spark logs
 
 
 
-📦 requirements.txt
-Plain Textpyspark==3.5.0kafka-pythonpsycopg2-binaryShow more lines
+📦 Requirements
+pyspark==3.5.0
+kafka-python
+psycopg2-binary
 
 🚀 Future Improvements
 
