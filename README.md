@@ -223,18 +223,23 @@ Delay (sec)Risk< 5NORMAL ✅5–15WARNING ⚠️> 15DELAYED 🔴
 
 ## 🛠️ Setup Instructions
 1. Clone Repository
+
 ```git clone https://github.com/tumelo05/orders-analytics-ml.gitcd orders-analytics-mlShow more lines```
 
 2. Start Services
+
 ```docker compose up -d```
 
 3. Create Kafka Topic
+
 ```docker exec -it order_analytics_kafka kafka-topics \  --bootstrap-server localhost:9092 \  --create \  --topic orders.created \  --partitions 3 \  --replication-factor 1```
 
 4. Run Kafka Producer
+
 ```docker exec -it order_analytics_kafka bashpython3 /opt/order_event_producer.py```
 
 5. Run Spark Job
+
 ```docker exec -it order_analytics_spark bash/opt/spark/bin/spark-submit \  --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \  --conf spark.jars.ivy=/tmp/ivy \  /opt/spark_job.py```
 
 6. Verify in Postgres
