@@ -217,8 +217,7 @@ A simple real-time classification model:
 Delay (sec)Risk< 5NORMAL ✅5–15WARNING ⚠️> 15DELAYED 🔴
 
 📸 Example Output
-./figures/kafka-spark-postgres.png
-(Replace with your screenshot — like the one you shared) ✅
+./figures/kafka-spark-postgres.png ✅
 
 ---
 
