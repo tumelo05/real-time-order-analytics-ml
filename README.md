@@ -85,7 +85,7 @@ In industries such as:
 - Fintech  
 - Ride-hailing  
 
-real-time data processing is essential for:
+Real-time data processing is essential for:
 
 - Customer experience optimization  
 - Operational monitoring  
