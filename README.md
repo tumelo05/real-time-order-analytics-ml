@@ -210,8 +210,9 @@ order_44458 | 8 | WARNING
 order_28956 | 20 | DELAYED
 
 
+---
 
-🤖 Machine Learning Logic
+## 🤖 Machine Learning Logic
 A simple real-time classification model:
 Delay (sec)Risk< 5NORMAL ✅5–15WARNING ⚠️> 15DELAYED 🔴
 
@@ -219,39 +220,44 @@ Delay (sec)Risk< 5NORMAL ✅5–15WARNING ⚠️> 15DELAYED 🔴
 ./figures/kafka-spark-postgres.png
 (Replace with your screenshot — like the one you shared) ✅
 
-🛠️ Setup Instructions
+---
+
+## 🛠️ Setup Instructions
 1. Clone Repository
-```Shellgit clone https://github.com/tumelo05/orders-analytics-ml.gitcd orders-analytics-mlShow more lines```
+```git clone https://github.com/tumelo05/orders-analytics-ml.gitcd orders-analytics-mlShow more lines```
 
 2. Start Services
-```Shelldocker compose up -d```
+```docker compose up -d```
 
 3. Create Kafka Topic
-```Shelldocker exec -it order_analytics_kafka kafka-topics \  --bootstrap-server localhost:9092 \  --create \  --topic orders.created \  --partitions 3 \  --replication-factor 1```
+```docker exec -it order_analytics_kafka kafka-topics \  --bootstrap-server localhost:9092 \  --create \  --topic orders.created \  --partitions 3 \  --replication-factor 1```
 
 4. Run Kafka Producer
-```Shelldocker exec -it order_analytics_kafka bashpython3 /opt/order_event_producer.py```
+```docker exec -it order_analytics_kafka bashpython3 /opt/order_event_producer.py```
 
 5. Run Spark Job
-```Shelldocker exec -it order_analytics_spark bash/opt/spark/bin/spark-submit \  --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \  --conf spark.jars.ivy=/tmp/ivy \  /opt/spark_job.py```
+```docker exec -it order_analytics_spark bash/opt/spark/bin/spark-submit \  --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \  --conf spark.jars.ivy=/tmp/ivy \  /opt/spark_job.py```
 
 6. Verify in Postgres
-```Shelldocker exec -it order_analytics_postgres psql \  -U analytics_user -d order_analytics
+```
+docker exec -it order_analytics_postgres psql \  -U analytics_user -d order_analytics
 SELECT *
 FROM raw.orders_line_items
 WHERE prod_sku = 'STREAM_SKU'
 ORDER BY rec_id DESC
 LIMIT 10;
 ```
+---
 
-📊 Key Features
+## 📊 Key Features
 ✅ Real-time ingestion
 ✅ Streaming transformations
 ✅ Feature engineering
 ✅ Live ML predictions
 ✅ Hybrid architecture (batch + streaming)
 
-🔥 Key Concepts Demonstrated
+---
+## 🔥 Key Concepts Demonstrated
 
 Event-driven architecture
 Stream processing
@@ -260,8 +266,9 @@ Schema evolution
 Real-time analytics
 ML inference in streaming
 
+---
 
-⚠️ Challenges Solved
+## ⚠️ Challenges Solved
 Problem	Solution
 Kafka container crashes	Restart & debug
 Missing topics	Manual creation
@@ -270,12 +277,16 @@ Schema mismatches	DB migrations
 Streaming failures	Debug Spark logs
 
 
-
+---
 
 📦 requirements.txt
-```Plain Textpyspark==3.5.0kafka-pythonpsycopg2-binaryShow more lines```
-
-🚀 Future Improvements
+```
+pyspark==3.5.0
+kafka-python
+psycopg2-binary
+```
+---
+## 🚀 Future Improvements
 
 ✅ Replace rules with ML model (e.g. Logistic Regression)
 ✅ Add real-time dashboards (Power BI / Superset)
@@ -283,13 +294,15 @@ Streaming failures	Debug Spark logs
 ✅ Implement alerting system
 ✅ Deploy to cloud (AWS / Azure)
 
+---
 
-🏁 Conclusion
+## 🏁 Conclusion
 This project demonstrates how to build a real-time data processing and ML pipeline, solving a real business problem using production-grade tools.
 
-👤 Author
+---
+## 👤 Author
 Tumelo Sethosa
 Contact: tumelo.j.sethosa@gmail.com
-
+---
 ⭐ If you like this project
-Give it a star ⭐ on GitHub!
+Give it a star ⭐
